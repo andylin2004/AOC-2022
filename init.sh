@@ -1,3 +1,4 @@
+#!/bin/sh
 for i in 1..25
 do
     mkdir Day$i
