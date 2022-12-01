@@ -1,9 +1,8 @@
-cals = []
-total = 0
-
 f = open("input.txt", 'r')
 input = f.read().splitlines()
 
+cals = []
+total = 0
 curTotal = 0
 for line in input:
     line = line.strip()
