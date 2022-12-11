@@ -1,5 +1,5 @@
 f = open("input.txt", 'r')
-# f = open("test_input.txt", 'r')
+f = open("test_input.txt", 'r')
 input = f.read().splitlines()
 
 area = [[0 for _ in range(6)] for _ in range(6)]
@@ -39,30 +39,20 @@ for line in input:
     count = int(line[2:])
     if direction == "R":
         for i in range(count):
-            if head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 1 and head_y - tail_y >= 2:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 1 and tail_y - head_y >= 2:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 1 and head_y - tail_y >= 2:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 1 and tail_y - head_y >= 2:
-                tail_x -= 1
-                tail_y -= 1
+            area[tail_x][tail_y] = 1
+            if (abs(head_x - tail_x) >= 2 and head_y != tail_y) or (abs(head_y - tail_y) >= 2 and head_x != tail_x):
+                if head_x - tail_x >= 1 and head_y - tail_y >= 1:
+                    tail_x += 1
+                    tail_y += 1
+                elif head_x - tail_x >= 1 and tail_y - head_y >= 1:
+                    tail_x += 1
+                    tail_y -= 1
+                elif tail_x - head_x >= 1 and head_y - tail_y >= 1:
+                    tail_x -= 1
+                    tail_y += 1
+                elif tail_x - head_x >= 1 and tail_y - head_y >= 1:
+                    tail_x -= 1
+                    tail_y -= 1
             elif head_x - tail_x >= 2:
                 tail_x += 1
             elif tail_x - head_x >= 2:
@@ -72,34 +62,23 @@ for line in input:
             elif tail_y - head_y >= 2:
                 tail_y -= 1
             head_y += 1
-            area[tail_x][tail_y] = 1
             renderArea()
     elif direction == "L":
         for i in range(count):
-            if head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 1 and head_y - tail_y >= 2:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 1 and tail_y - head_y >= 2:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 1 and head_y - tail_y >= 2:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 1 and tail_y - head_y >= 2:
-                tail_x -= 1
-                tail_y -= 1
+            area[tail_x][tail_y] = 1
+            if (abs(head_x - tail_x) >= 2 and head_y != tail_y) or (abs(head_y - tail_y) >= 2 and head_x != tail_x):
+                if head_x - tail_x >= 1 and head_y - tail_y >= 1:
+                    tail_x += 1
+                    tail_y += 1
+                elif head_x - tail_x >= 1 and tail_y - head_y >= 1:
+                    tail_x += 1
+                    tail_y -= 1
+                elif tail_x - head_x >= 1 and head_y - tail_y >= 1:
+                    tail_x -= 1
+                    tail_y += 1
+                elif tail_x - head_x >= 1 and tail_y - head_y >= 1:
+                    tail_x -= 1
+                    tail_y -= 1
             elif head_x - tail_x >= 2:
                 tail_x += 1
             elif tail_x - head_x >= 2:
@@ -109,34 +88,23 @@ for line in input:
             elif tail_y - head_y >= 2:
                 tail_y -= 1
             head_y -= 1
-            area[tail_x][tail_y] = 1
             renderArea()
     if direction == "U":
         for i in range(count):
-            if head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 1 and head_y - tail_y >= 2:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 1 and tail_y - head_y >= 2:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 1 and head_y - tail_y >= 2:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 1 and tail_y - head_y >= 2:
-                tail_x -= 1
-                tail_y -= 1
+            area[tail_x][tail_y] = 1
+            if (abs(head_x - tail_x) >= 2 and head_y != tail_y) or (abs(head_y - tail_y) >= 2 and head_x != tail_x):
+                if head_x - tail_x >= 1 and head_y - tail_y >= 1:
+                    tail_x += 1
+                    tail_y += 1
+                elif head_x - tail_x >= 1 and tail_y - head_y >= 1:
+                    tail_x += 1
+                    tail_y -= 1
+                elif tail_x - head_x >= 1 and head_y - tail_y >= 1:
+                    tail_x -= 1
+                    tail_y += 1
+                elif tail_x - head_x >= 1 and tail_y - head_y >= 1:
+                    tail_x -= 1
+                    tail_y -= 1
             elif head_x - tail_x >= 2:
                 tail_x += 1
             elif tail_x - head_x >= 2:
@@ -146,34 +114,23 @@ for line in input:
             elif tail_y - head_y >= 2:
                 tail_y -= 1
             head_x -= 1
-            area[tail_x][tail_y] = 1
             renderArea()
     elif direction == "D":
         for i in range(count):
-            if head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 1 and head_y - tail_y >= 2:
-                tail_x += 1
-                tail_y += 1
-            elif head_x - tail_x >= 1 and tail_y - head_y >= 2:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 1 and head_y - tail_y >= 2:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_x - head_x >= 1 and tail_y - head_y >= 2:
-                tail_x -= 1
-                tail_y -= 1
+            area[tail_x][tail_y] = 1
+            if (abs(head_x - tail_x) >= 2 and head_y != tail_y) or (abs(head_y - tail_y) >= 2 and head_x != tail_x):
+                if head_x - tail_x >= 1 and head_y - tail_y >= 1:
+                    tail_x += 1
+                    tail_y += 1
+                elif head_x - tail_x >= 1 and tail_y - head_y >= 1:
+                    tail_x += 1
+                    tail_y -= 1
+                elif tail_x - head_x >= 1 and head_y - tail_y >= 1:
+                    tail_x -= 1
+                    tail_y += 1
+                elif tail_x - head_x >= 1 and tail_y - head_y >= 1:
+                    tail_x -= 1
+                    tail_y -= 1
             elif head_x - tail_x >= 2:
                 tail_x += 1
             elif tail_x - head_x >= 2:
@@ -183,11 +140,8 @@ for line in input:
             elif tail_y - head_y >= 2:
                 tail_y -= 1
             head_x += 1
-            area[tail_x][tail_y] = 1
+            
             renderArea()
-
-    
-    
     print()
 
 for table_row in area:
