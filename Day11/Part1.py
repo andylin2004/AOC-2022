@@ -57,7 +57,7 @@ for _ in range(20):
                 result *= int(monkey.operation[1])
             elif monkey.operation[0] == '+':
                 result += int(monkey.operation[1])
-            result //= 3
+            # result //= 3
             if result % monkey.divisible_by == 0:
                 monkeys[monkey.true_throw].items.append(result)
             else:

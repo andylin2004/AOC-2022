@@ -7,8 +7,6 @@ head_x = 5
 head_y = 0
 tail_x = 5
 tail_y = 0
-moving_x = None
-is_pivot = False
 total = 0
 
 area = [[0 for _ in range(10000)] for _ in range(10000)]
@@ -16,8 +14,6 @@ head_x = 5000
 head_y = 0
 tail_x = 5000
 tail_y = 0
-moving_x = None
-is_pivot = False
 total = 0
 
 def renderArea():
@@ -33,6 +29,40 @@ def renderArea():
     # print()
     pass
 
+def move_tail(tail_x, tail_y):
+    if tail_x - head_x >= 2 and head_y == tail_y:
+        tail_x -= 1
+    elif head_x - tail_x >= 2 and head_y == tail_y:
+        tail_x += 1
+    elif tail_y - head_y >= 2 and head_x == tail_x:
+        tail_y -= 1
+    elif head_y - tail_y >= 2 and head_x == tail_x:
+        tail_y += 1
+    elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
+        tail_x -= 1
+        tail_y -= 1
+    elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
+        tail_x += 1
+        tail_y -= 1
+    elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
+        tail_x -= 1
+        tail_y += 1
+    elif head_x - tail_x >= 2 and head_y - tail_y >= 1:
+        tail_x += 1
+        tail_y += 1
+    elif tail_y - head_y >= 2 and tail_x - head_x >= 1:
+        tail_x -= 1
+        tail_y -= 1
+    elif head_y - tail_y >= 2 and tail_x - head_x >= 1:
+        tail_x -= 1
+        tail_y += 1
+    elif tail_y - head_y >= 2 and head_x - tail_x >= 1:
+        tail_x += 1
+        tail_y -= 1
+    elif head_y - tail_y >= 2 and head_x - tail_x >= 1:
+        tail_x += 1
+        tail_y += 1
+
 for line in input:
     print(line)
     direction = line[0]
@@ -40,149 +70,25 @@ for line in input:
     if direction == "R":
         for i in range(count):
             head_y += 1
-            if tail_x - head_x >= 2 and head_y == tail_y:
-                tail_x -= 1
-            elif head_x - tail_x >= 2 and head_y == tail_y:
-                tail_x += 1
-            elif tail_y - head_y >= 2 and head_x == tail_x:
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x == tail_x:
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y += 1
+            move_tail(tail_x, tail_y)
             area[tail_x][tail_y] = 1
             renderArea()
     elif direction == "L":
         for i in range(count):
             head_y -= 1
-            if tail_x - head_x >= 2 and head_y == tail_y:
-                tail_x -= 1
-            elif head_x - tail_x >= 2 and head_y == tail_y:
-                tail_x += 1
-            elif tail_y - head_y >= 2 and head_x == tail_x:
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x == tail_x:
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y += 1
+            move_tail(tail_x, tail_y)
             area[tail_x][tail_y] = 1
             renderArea()
     if direction == "U":
         for i in range(count):
             head_x -= 1
-            if tail_x - head_x >= 2 and head_y == tail_y:
-                tail_x -= 1
-            elif head_x - tail_x >= 2 and head_y == tail_y:
-                tail_x += 1
-            elif tail_y - head_y >= 2 and head_x == tail_x:
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x == tail_x:
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y += 1
+            move_tail(tail_x, tail_y)
             area[tail_x][tail_y] = 1
             renderArea()
     elif direction == "D":
         for i in range(count):            
             head_x += 1
-            if tail_x - head_x >= 2 and head_y == tail_y:
-                tail_x -= 1
-            elif head_x - tail_x >= 2 and head_y == tail_y:
-                tail_x += 1
-            elif tail_y - head_y >= 2 and head_x == tail_x:
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x == tail_x:
-                tail_y += 1
-            elif tail_x - head_x >= 2 and tail_y - head_y >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_x - tail_x >= 2 and tail_y - head_y >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif tail_x - head_x >= 2 and head_y - tail_y >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif head_x - tail_x >= 2 and head_y - tail_y >= 1:
-                tail_x += 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and tail_x - head_x >= 1:
-                tail_x -= 1
-                tail_y += 1
-            elif tail_y - head_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y -= 1
-            elif head_y - tail_y >= 2 and head_x - tail_x >= 1:
-                tail_x += 1
-                tail_y += 1
+            move_tail(tail_x, tail_y)
             area[tail_x][tail_y] = 1
             renderArea()
     print()

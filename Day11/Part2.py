@@ -1,8 +1,9 @@
 import re
 from collections import deque
+from functools import cache
 
 f = open("input.txt", 'r')
-f = open("test_input.txt", 'r')
+# f = open("test_input.txt", 'r')
 input = f.read().splitlines()
 count_monkeys = 1 + input.count("")
 
@@ -111,8 +112,8 @@ for _ in range(10000):
 
             monkey.inspect_count += 1
 
-print(monkeys)
+# print(monkeys)
 
 sorted_result = sorted(monkeys, key=lambda x: x.inspect_count, reverse=True)
-print(sorted_result)
+# print(sorted_result)
 print(sorted_result[0].inspect_count * sorted_result[1].inspect_count)
